@@ -1,12 +1,12 @@
 import React from 'react';
-import {Users} from "./components/users";
-import 'antd/dist/antd.css';
+import {Users, Todo} from "./components";
 
 export const App = () => {
 
     return (
         <div className='App'>
             <Users/>
+            <Todo />
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { Table } from 'antd';
 import {fetchUsers} from '../../asyncAction/users';
 import {useDispatch, useSelector} from 'react-redux';
+import 'antd/dist/antd.css';
 
 export const Users = () => {
     const dispatch = useDispatch();
@@ -10,32 +11,40 @@ export const Users = () => {
         {
             title: 'Name',
             dataIndex: 'name',
-            key: '1',
+            key: 'id',
         },
         {
             title: 'Email',
             dataIndex: 'email',
-            key: '2',
+            key: 'id',
         },
         {
             title: 'Phone',
             dataIndex: 'phone',
-            key: '3',
+            key: 'id',
         },
         {
             title: 'Username',
             dataIndex: 'username',
-            key: '4',
+            key: 'id',
         },
         {
             title: 'Website',
             dataIndex: 'website',
-            key: '5',
+            key: 'id',
         }
     ];
     useEffect (()=> {
          dispatch(fetchUsers());
     },[dispatch]);
+    const dataWithKeys = data.map(i =>  ({
+        key: i.id,
+        name: i.name,
+        email: i.email,
+        phone: i.phone,
+        username: i.username,
+        website: i.website
+    }));
 
-    return data.length !== 0 ? <Table columns={columns} dataSource={data} key='id' /> : <h1>No users</h1>
+    return data.length !== 0 ? <Table columns={columns} dataSource={dataWithKeys} /> : <h1>No users</h1>
 };
