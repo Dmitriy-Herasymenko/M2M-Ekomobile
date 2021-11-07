@@ -1,12 +1,4 @@
 import React from 'react';
-import {Users, Todo} from "./components";
+import {Sidebar} from "./modules/sidebar";
 
-export const App = () => {
-
-    return (
-        <div className='App'>
-            <Users/>
-            <Todo />
-        </div>
-    );
-};
+export const App = () => <Sidebar className='App'/>;
