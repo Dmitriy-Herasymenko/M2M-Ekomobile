@@ -1,6 +1,5 @@
 import React from "react";
 import { Menu } from 'antd';
-import { AppstoreOutlined, MailOutlined } from '@ant-design/icons';
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
 import {routes, links} from "../../modules/routes";
 import 'antd/dist/antd.css';

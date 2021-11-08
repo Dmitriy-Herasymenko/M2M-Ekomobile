@@ -46,5 +46,5 @@ export const Users = () => {
         website: i.website
     }));
 
-    return data.length !== 0 ? <Table columns={columns} dataSource={dataWithKeys} style={{margin: '0 auto', width: '85%'}} /> : <h1>No users</h1>
+    return data.length !== 0 ? <Table columns={columns} dataSource={dataWithKeys} bordered style={{margin: '0 auto', width: '85%'}} /> : <h1>No users</h1>
 };
