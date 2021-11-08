@@ -1,6 +1,6 @@
 import React from "react";
 import { AppstoreOutlined, MailOutlined } from '@ant-design/icons';
-import {Users, Todo} from "../../components";
+import { Users, Todo, Posts } from "../../components/index";
 
 export const links = [
     {
@@ -45,8 +45,8 @@ export const links = [
         ],
     },
     {
-        title: 'SomeComponents',
-        link: '/something',
+        title: 'Posts',
+        link: '/posts',
         icon: <MailOutlined/>,
         subMenuCheck: false
     },
@@ -55,18 +55,15 @@ export const links = [
 
 export const routes = [
     {
-        path: '/',
-    },
-    {
-        title: 'Users',
         path: '/users',
-        icon: <MailOutlined />,
         component: <Users />
     },
     {
-        title: 'Todo',
         path: '/todos',
-        icon: <MailOutlined />,
         component: <Todo />
+    },
+    {
+        path: '/posts',
+        component: <Posts />
     }
 ];
