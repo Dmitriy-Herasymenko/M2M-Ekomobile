@@ -1,45 +1,46 @@
 import React from "react";
 import { Menu } from 'antd';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom"
-import {Users, Todo} from "../index";
+import { AppstoreOutlined, MailOutlined } from '@ant-design/icons';
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+import {routes, links} from "../../modules/routes";
 import 'antd/dist/antd.css';
 
 export const Divider  = () => {
     const { SubMenu } = Menu;
-    const handleClick = e => {
-        console.log('click ', e);
-    };
-
     return (
-        <>
+        <div style={{display: 'flex'}}>
             <BrowserRouter>
             <Menu
-                onClick={handleClick}
-                style={{ width: 256, height: '100vh' }}
+                style={{ width: '256px', height: '100vh' }}
                 defaultSelectedKeys={['1']}
                 defaultOpenKeys={['sub1']}
                 mode="inline"
+                type="vertical"
             >
-                <SubMenu key="sub1" icon={<MailOutlined />} title="Users">
-                    <Menu.Item key="1"><Link to='/users'>All Users</Link></Menu.Item>
-                    <Menu.Item key="2"><Link to='/addUser'>Register User</Link></Menu.Item>
-                    <Menu.Item key="3"><Link to='/delUser'>Delete User</Link></Menu.Item>
-                </SubMenu>
-                <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Todos">
-                    <Menu.Item key="1"><Link to='/todos'>All Todos</Link></Menu.Item>
-                    <Menu.Item key="6">Add Todos</Menu.Item>
-                    <Menu.Item key="7">Delete Todos</Menu.Item>
-                </SubMenu>
+                {links.map((link, index) => {
+                    return (
+                        link.subMenuCheck?
+                            <SubMenu key={index} icon={link.icon} title={link.title}>
+                        {link.subMenu.map((subLink, key) =>
+                            <Menu.Item key={key}>
+                                <Link to={subLink.link}>{subLink.title}</Link>
+                            </Menu.Item>
+                        )
+
+                        }
+                    </SubMenu> : <Menu.Item key={index} icon={link.icon}><Link to={link.link}>{link.title}</Link></Menu.Item>
+                    )
+                })}
             </Menu>
-                <Switch>
-                    <Route path='/Users' component={Users} />
-                    <Route path='Todos' component={Todo} />
-                </Switch>
+                <Routes>
+                    {routes.map((route, index) => (
+                        <Route path={route.path} element={route.component} key={index} />
+                        ))}
+                </Routes>
             </BrowserRouter>
-        </>
+        </div>
     );
-}
+};
 
 
 

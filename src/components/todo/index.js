@@ -28,5 +28,5 @@ export const Todo = () => {
         completed: todo.completed? 'Completed' : 'Not Completed'
     }));
 
-    return data.length !== 0 ? <Table columns={columns} dataSource={dataWithKeys} /> : <h1>No users</h1>
+    return data.length !== 0 ? <Table columns={columns} dataSource={dataWithKeys} style={{margin: '0 auto', width: '85%'}} /> : <h1>No users</h1>
 };
