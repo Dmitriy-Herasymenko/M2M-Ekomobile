@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 
 export const Todo = () => {
     const dispatch = useDispatch();
-    const data =  useSelector(state => state.todo.todo);
+    const data =  useSelector(state => state.todo.items);
     const columns = [
         {
             title: 'Title',

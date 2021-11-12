@@ -1,17 +1,17 @@
 import {Form, Input, Popconfirm, Table, Typography} from "antd";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getPostsRequest, updatePostRequest} from "../../asyncAction/posts";
+import {deletePostRequest, getPostsRequest, updatePostRequest} from "../../asyncAction/posts";
 
 export const EditTablePost = () => {
     const [form] = Form.useForm();
     const dispatch = useDispatch();
-    const data =  useSelector(state => state.posts.posts);
+    const data = useSelector(state => state.posts.posts);
     const [editingKey, setEditingKey] = useState('');
 
-    useEffect (()=> {
+    useEffect(() => {
         dispatch(getPostsRequest());
-    },[]);
+    }, []);
 
     const save = async (id) => {
         try {
@@ -23,6 +23,7 @@ export const EditTablePost = () => {
             console.log('Validate Failed:', errInfo);
         }
     };
+    const delRequest = id => dispatch(deletePostRequest(id));
 
     const EditableCell = ({
                               editing,
@@ -51,7 +52,7 @@ export const EditTablePost = () => {
                             },
                         ]}
                     >
-                        <Input  />
+                        <Input/>
                     </Form.Item>
                 ) : (
                     children
@@ -106,11 +107,19 @@ export const EditTablePost = () => {
             </Popconfirm>
           </span>
                 ) : (
-                    <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-                        Edit
-                    </Typography.Link>
+                    <div>
+                        <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
+                            Edit
+                        </Typography.Link>
+                        <Popconfirm title="Sure to delete?" onConfirm={() => delRequest(record.id)}>
+                            <a style={{paddingLeft: '5px', color: '#c41d7f'}}>Delete</a>
+                        </Popconfirm>
+                    </div>
+
                 );
             },
+
+
         },
     ];
     const mergedColumns = columns.map((col) => {

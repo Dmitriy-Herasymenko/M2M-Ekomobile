@@ -1,5 +1,6 @@
 const defaultState = {
-    todo: []
+    items: [],
+    loader: false
 };
 
 const GET_TODO = 'GET_TODO';
@@ -7,7 +8,7 @@ const GET_TODO = 'GET_TODO';
 export const todoReducer = (state = defaultState, action) => {
     switch (action.type) {
         case GET_TODO:
-            return {...state, todo: [...state.todo, ...action.payload]};
+            return {...state, items: [...state.items, ...action.payload]};
         default:
             return state
     }
