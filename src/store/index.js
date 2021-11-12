@@ -1,5 +1,4 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import {cashReducer} from './reducers/cashReducer';
 import {usersReducer} from './reducers/usersReducer';
 import {todoReducer} from './reducers/todoReducer';
 import {postsReducer} from "./reducers/postsReducer";
@@ -8,7 +7,6 @@ import thunk from 'redux-thunk';
 
 
 const rootReducer = combineReducers({
-    cash: cashReducer,
     users: usersReducer,
     todo: todoReducer,
     posts: postsReducer
