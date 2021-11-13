@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Button, Input, Modal} from 'antd';
-import {postPostRequest} from "../../asyncAction/posts";
+import {postPostRequest} from "../../asyncActions/posts";
 import {useDispatch} from "react-redux";
 
 export const AddPost = () => {

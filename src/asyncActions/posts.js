@@ -1,4 +1,11 @@
-import {addPost, getPosts, updatePost, deletePost} from "../store/reducers/postsReducer";
+import {
+    addPost,
+    getPosts,
+    updatePost,
+    deletePostFetching,
+    deletePostError,
+    deletePostSuccess
+} from "../store/reducers/postsReducer";
 
 export const getPostsRequest = () => {
 
@@ -52,7 +59,7 @@ export const deletePostRequest = id => {
         fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
             method: 'DELETE',
         })
-            .then(() =>dispatch(deletePost(id)))
-
-
-}};
+            .then((data) => dispatch(deletePostSuccess(id)))
+            .catch((error) => dispatch(deletePostError(error)))
+    }
+};

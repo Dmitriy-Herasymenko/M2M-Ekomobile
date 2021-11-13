@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { Table } from 'antd';
-import {fetchTodo} from "../../asyncAction/todo";
+import {fetchTodo} from "../../asyncActions/todo";
 import {useDispatch, useSelector} from 'react-redux';
 import 'antd/dist/antd.css';
 

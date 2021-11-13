@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { Table } from 'antd';
-import {fetchUsers} from '../../asyncAction/users';
+import {fetchUsers} from '../../asyncActions/users';
 import {useDispatch, useSelector} from 'react-redux';
 import 'antd/dist/antd.css';
 

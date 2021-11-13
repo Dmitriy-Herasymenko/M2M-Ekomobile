@@ -1,14 +1,14 @@
-import {Form, Input, Popconfirm, Table, Typography} from "antd";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deletePostRequest, getPostsRequest, updatePostRequest} from "../../asyncAction/posts";
+import {Form, Input, Popconfirm, Table, Typography, Spin} from "antd";
+import {deletePostRequest, getPostsRequest, updatePostRequest} from "../../asyncActions/posts";
+import {deletePostFetching} from '../../store/reducers/postsReducer';
 
 export const EditTablePost = () => {
     const [form] = Form.useForm();
     const dispatch = useDispatch();
-    const data = useSelector(state => state.posts.posts);
+    const {items, loading} = useSelector(state => state.posts);
     const [editingKey, setEditingKey] = useState('');
-
     useEffect(() => {
         dispatch(getPostsRequest());
     }, []);
@@ -18,12 +18,14 @@ export const EditTablePost = () => {
             const row = await form.validateFields();
             dispatch(updatePostRequest(id, row.title, row.body));
             setEditingKey('');
-            console.log("data", data)
         } catch (errInfo) {
             console.log('Validate Failed:', errInfo);
         }
     };
-    const delRequest = id => dispatch(deletePostRequest(id));
+    const delRequest = id => {
+        dispatch(deletePostFetching());
+        dispatch(deletePostRequest(id));
+    };
 
     const EditableCell = ({
                               editing,
@@ -140,20 +142,22 @@ export const EditTablePost = () => {
     });
     return (
         <Form form={form} component={false}>
-            <Table
+            {!loading ?
+                <Table
                 components={{
                     body: {
                         cell: EditableCell,
                     },
                 }}
                 bordered
-                dataSource={data}
+                dataSource={items}
                 columns={mergedColumns}
                 rowClassName="editable-row"
                 pagination={{
                     onChange: cancel,
                 }}
-            />
+            /> :
+            <Spin  tip="Loading..."  style={{ height: '50%', position: 'absolute', margin: '20% 35%' }}/>}
         </Form>
     )
 }
