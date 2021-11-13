@@ -1,10 +1,8 @@
+import { ADD_USER, GET_USERS, REMOVE_USER  } from './index';
+
 const defaultState = {
     users: []
 };
-
-const ADD_USER = 'ADD_USER';
-const GET_USERS = 'GET_USERS';
-const REMOVE_USER = 'REMOVE_USER';
 
 export const usersReducer = (state = defaultState, action) => {
     switch (action.type) {
@@ -18,7 +16,3 @@ export const usersReducer = (state = defaultState, action) => {
             return state
     }
 };
-
-export const addUser = payload => ({type: ADD_USER, payload});
-export const getUsers = payload => ({type: GET_USERS, payload});
-export const removeUser = payload => ({type: REMOVE_USER, payload});

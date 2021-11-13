@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Form, Input, Popconfirm, Table, Typography, Spin} from "antd";
-import {deletePostRequest, getPostsRequest, updatePostRequest} from "../../asyncActions/posts";
-import {deletePostFetching} from '../../store/reducers/postsReducer';
+import {deletePostRequest, getPostsRequest, updatePostRequest, deletePostFetching} from "../../modules/posts";
 
 export const EditTablePost = () => {
     const [form] = Form.useForm();

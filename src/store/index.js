@@ -1,14 +1,14 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import {usersReducer} from './reducers/usersReducer';
-import {todoReducer} from './reducers/todoReducer';
-import {postsReducer} from "./reducers/postsReducer";
+import {usersReducer} from '../modules/users';
+import {todosReducer} from '../modules/todos';
+import {postsReducer} from "../modules/posts";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 
 const rootReducer = combineReducers({
     users: usersReducer,
-    todo: todoReducer,
+    todo: todosReducer,
     posts: postsReducer
 });
 

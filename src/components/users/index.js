@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Table } from 'antd';
-import {fetchUsers} from '../../asyncActions/users';
-import {useDispatch, useSelector} from 'react-redux';
+import { fetchUsers } from '../../modules/users';
+import { useDispatch, useSelector } from 'react-redux';
 import 'antd/dist/antd.css';
 
 export const Users = () => {
@@ -46,5 +46,5 @@ export const Users = () => {
         website: i.website
     }));
 
-    return data.length !== 0 ? <Table columns={columns} dataSource={dataWithKeys} bordered style={{margin: '0 auto', width: '85%'}} /> : <h1>No users</h1>
+    return <Table columns={columns} dataSource={dataWithKeys} bordered style={{margin: '0 auto', width: '85%'}} />
 };

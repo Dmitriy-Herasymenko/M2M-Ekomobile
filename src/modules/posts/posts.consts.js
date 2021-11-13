@@ -1,0 +1,6 @@
+export const GET_POSTS = 'GET_POSTS';
+export const ADD_POST = 'ADD_POST';
+export const UPDATE_POST = 'UPDATE_POST';
+export const DELETE_POST_FETCHING = 'DELETE_POST_FETCHING';
+export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
+export const DELETE_POST_ERROR = 'DELETE_POST_ERROR';
