@@ -1,6 +1,6 @@
 import React from "react";
-import { AppstoreOutlined, MailOutlined } from '@ant-design/icons';
-import { Users, Todo, Posts } from "../../components/index";
+import {AppstoreOutlined, MailOutlined} from '@ant-design/icons';
+import {Users, Todo, Posts} from "../../components/index";
 
 export const links = [
     {
@@ -56,14 +56,14 @@ export const links = [
 export const routes = [
     {
         path: '/users',
-        component: <Users />
+        component: <Users/>
     },
     {
         path: '/todos',
-        component: <Todo />
+        component: <Todo/>
     },
     {
         path: '/posts',
-        component: <Posts />
+        component: <Posts/>
     }
 ];

@@ -1,3 +1,4 @@
 export const ADD_USER = 'ADD_USER';
-export const GET_USERS = 'GET_USERS';
+export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
+export const GET_USERS_FETCHING = 'GET_USERS_FETCHING';
 export const REMOVE_USER = 'REMOVE_USER';

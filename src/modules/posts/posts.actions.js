@@ -56,7 +56,6 @@ export const deletePostRequest = id => {
 };
 
 
-
 export const getPosts = payload => ({type: GET_POSTS, payload});
 export const addPost = payload => ({type: ADD_POST, payload});
 export const updatePost = payload => ({type: UPDATE_POST, payload});

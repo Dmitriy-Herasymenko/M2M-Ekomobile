@@ -1,4 +1,4 @@
-import { GET_TODO } from "./index";
+import {GET_TODO} from "./index";
 
 export const fetchTodo = () => {
     return dispatch => {

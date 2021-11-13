@@ -1,4 +1,4 @@
 import React from 'react';
-import {Sidebar} from "./modules/sidebar";
+import {Sidebar} from "./components/sidebar";
 
 export const App = () => <Sidebar className='App'/>;

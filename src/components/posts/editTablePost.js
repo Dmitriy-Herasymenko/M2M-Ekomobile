@@ -8,9 +8,10 @@ export const EditTablePost = () => {
     const dispatch = useDispatch();
     const {items, loading} = useSelector(state => state.posts);
     const [editingKey, setEditingKey] = useState('');
+
     useEffect(() => {
         dispatch(getPostsRequest());
-    }, []);
+    }, [dispatch]);
 
     const save = async (id) => {
         try {
@@ -139,24 +140,25 @@ export const EditTablePost = () => {
             }),
         };
     });
+
     return (
         <Form form={form} component={false}>
             {!loading ?
                 <Table
-                components={{
-                    body: {
-                        cell: EditableCell,
-                    },
-                }}
-                bordered
-                dataSource={items}
-                columns={mergedColumns}
-                rowClassName="editable-row"
-                pagination={{
-                    onChange: cancel,
-                }}
-            /> :
-            <Spin  tip="Loading..."  style={{ height: '50%', position: 'absolute', margin: '20% 35%' }}/>}
+                    components={{
+                        body: {
+                            cell: EditableCell,
+                        },
+                    }}
+                    bordered
+                    dataSource={items}
+                    columns={mergedColumns}
+                    rowClassName="editable-row"
+                    pagination={{
+                        onChange: cancel,
+                    }}
+                /> :
+                <Spin tip="Loading..." style={{height: '50%', position: 'absolute', margin: '20% 35%'}}/>}
         </Form>
     )
 }

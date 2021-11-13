@@ -4,21 +4,22 @@ import {fetchTodo} from "../../modules/todos/";
 import {useDispatch, useSelector} from 'react-redux';
 import 'antd/dist/antd.css';
 
+const columns = [
+    {
+        title: 'Title',
+        dataIndex: 'title',
+        key: 'title',
+    },
+    {
+        title: 'Completed',
+        dataIndex: 'completed',
+        key: 'completed',
+    }
+];
+
 export const Todo = () => {
     const dispatch = useDispatch();
     const data =  useSelector(state => state.todo.items);
-    const columns = [
-        {
-            title: 'Title',
-            dataIndex: 'title',
-            key: 'title',
-        },
-        {
-            title: 'Completed',
-            dataIndex: 'completed',
-            key: 'completed',
-        }
-    ];
     useEffect (()=> {
         dispatch(fetchTodo());
     },[dispatch]);

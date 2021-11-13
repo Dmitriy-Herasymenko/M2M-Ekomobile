@@ -1,5 +1,5 @@
 import React from "react";
-import {Header, Divider} from "../../components";
+import {Header, Divider} from "../index";
 
 
 export const Sidebar = () => {
